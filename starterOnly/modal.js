@@ -25,7 +25,7 @@ function launchModal() {
 
 // get cross button
 let closeCross = document.querySelector(".close");
-
+const closeBtn = document.getElementById("closeForm")
 
 // fermer la popup
 function closeModal() {
@@ -34,6 +34,8 @@ function closeModal() {
 
 // Ferme la popup au click sur la croix du formulaire
 closeCross.addEventListener("click", closeModal);
+closeBtn.addEventListener("click", closeModal);
+
 
 // 2nd step
 // Récupération des informations du formulaire
@@ -59,7 +61,6 @@ firstName.addEventListener("invalid", () => {
   const formDataElement = firstName.parentElement;
   formDataElement.setAttribute("data-error", "Veuillez entrer 2 caractères ou plus.")
   formDataElement.setAttribute("data-error-visible", "true");
-  console.log(formDataElement, "invalid");
   }
 );
 
@@ -67,7 +68,6 @@ lastName.addEventListener("invalid", () => {
   const formDataElement = lastName.parentElement;
   formDataElement.setAttribute("data-error", "Veuillez entrer 2 caractères ou plus.")
   formDataElement.setAttribute("data-error-visible", "true");
-  console.log(formDataElement, "invalid");
   }
 );
 
@@ -75,7 +75,6 @@ email.addEventListener("invalid", () => {
   const formDataElement = email.parentElement;
   formDataElement.setAttribute("data-error", "Veuillez entrer une adresse e-mail valide.")
   formDataElement.setAttribute("data-error-visible", "true");
-  console.log(formDataElement, "invalid");
   }
 );
 
@@ -83,7 +82,6 @@ birthdate.addEventListener("invalid", () => {
   const formDataElement = birthdate.parentElement;
   formDataElement.setAttribute("data-error", "Veuillez entrer votre date de naissance.")
   formDataElement.setAttribute("data-error-visible", "true");
-  console.log(formDataElement, "invalid");
   }
 );
 
@@ -91,7 +89,6 @@ quantity.addEventListener("invalid", () => {
   const formDataElement = quantity.parentElement;
   formDataElement.setAttribute("data-error", "Veuillez entrer 1 nombre entre 0 et 99.")
   formDataElement.setAttribute("data-error-visible", "true");
-  console.log(formDataElement, "invalid");
   }
 );
 
@@ -99,7 +96,6 @@ city.addEventListener("invalid", () => {
   const formDataElement = city.parentElement;
   formDataElement.setAttribute("data-error", "Veuillez choisir une option.")
   formDataElement.setAttribute("data-error-visible", "true");
-  console.log(formDataElement, "invalid");
   }
 );
 
@@ -107,7 +103,6 @@ gcu.addEventListener("invalid", () => {
   const formDataElement = gcu.parentElement;
   formDataElement.setAttribute("data-error", "Veuillez accepter les CGU.")
   formDataElement.setAttribute("data-error-visible", "true");
-  console.log(formDataElement, "invalid");
   }
 );
 
@@ -127,11 +122,13 @@ form.addEventListener("submit", (event) => {
       break
     }
   }
-  console.log(first, last, email, birthdate, quantity, location);
+  const submitConfirm = document.getElementById("submitConfirm");
+  form.classList.add("select-hide");
+  submitConfirm.classList.remove("select-hide");
+  console.log(form);
+
 });
 
 submitBtn.addEventListener("click", (event) => {
   removeDataError();
 });
-
-console.log(submitBtn, "test");

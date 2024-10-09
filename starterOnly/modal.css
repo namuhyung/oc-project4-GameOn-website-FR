@@ -97,7 +97,6 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
   }
 } 
 
@@ -405,7 +404,6 @@ input[data-error]::after {
   font-size: 16px;
 }
 .hero-section {
-  min-height: 93vh;
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -495,24 +493,25 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 3rem;
     white-space: normal;
   }
   .hero-text {
     width: unset;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    margin-top: 30px;
   }
   .hero-img img {
     border-radius: 10px;
-    margin-top: 40px;
+    margin-top: 20px;
   }
   .hero-section > .btn-signup {
     display: block;
-    margin: 32px auto 10px;
+    margin: 20px auto 10px;
     padding: 12px 35px;
   }
   .copyrights {
-    margin-top: 50px;
+    margin: 20px 0 5px;
     text-align: center;
   }
 }
@@ -527,3 +526,21 @@ footer {
   }
 }
 
+#submitConfirm {
+  text-align: center;
+  padding: 130px 8% 15px 8%;
+  margin: 15px auto;
+}
+
+
+.btn-confirm {
+  background: #fe142f;
+  display: block;
+  margin: 100px auto 5px auto;
+  border-radius: 7px;
+  font-size: 1rem;
+  padding: 12px 82px;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+}
