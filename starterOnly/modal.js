@@ -21,3 +21,16 @@ function launchModal() {
 }
 
 
+// START OWN CODE
+
+// get cross button
+let closeCross = document.querySelector(".close");
+
+
+// fermer la popup
+function closeModal() {
+  modalbg.style.display = "none";
+}
+
+// Ferme la popup au click sur la croix du formulaire
+closeCross.addEventListener("click", closeModal);
