@@ -34,3 +34,104 @@ function closeModal() {
 
 // Ferme la popup au click sur la croix du formulaire
 closeCross.addEventListener("click", closeModal);
+
+// 2nd step
+// Récupération des informations du formulaire
+const form = document.querySelector("form");
+const firstName = document.getElementById("first");
+const lastName = document.getElementById("last");
+const email = document.getElementById("email");
+const birthdate = document.getElementById("birthdate");
+const quantity = document.getElementById("quantity");
+const city = document.querySelector("input[name='location']");
+const gcu = document.getElementById("checkbox1");
+const submitBtn = document.querySelector(".btn-submit");
+
+function removeDataError() {
+  const dataError = document.querySelectorAll("[data-error-visible]");
+  dataError.forEach((dataError) => {
+    dataError.removeAttribute("data-error");
+    dataError.removeAttribute("data-error-visible");
+  })
+};
+
+firstName.addEventListener("invalid", () => {
+  const formDataElement = firstName.parentElement;
+  formDataElement.setAttribute("data-error", "Veuillez entrer 2 caractères ou plus.")
+  formDataElement.setAttribute("data-error-visible", "true");
+  console.log(formDataElement, "invalid");
+  }
+);
+
+lastName.addEventListener("invalid", () => {
+  const formDataElement = lastName.parentElement;
+  formDataElement.setAttribute("data-error", "Veuillez entrer 2 caractères ou plus.")
+  formDataElement.setAttribute("data-error-visible", "true");
+  console.log(formDataElement, "invalid");
+  }
+);
+
+email.addEventListener("invalid", () => {
+  const formDataElement = email.parentElement;
+  formDataElement.setAttribute("data-error", "Veuillez entrer une adresse e-mail valide.")
+  formDataElement.setAttribute("data-error-visible", "true");
+  console.log(formDataElement, "invalid");
+  }
+);
+
+birthdate.addEventListener("invalid", () => {
+  const formDataElement = birthdate.parentElement;
+  formDataElement.setAttribute("data-error", "Veuillez entrer votre date de naissance.")
+  formDataElement.setAttribute("data-error-visible", "true");
+  console.log(formDataElement, "invalid");
+  }
+);
+
+quantity.addEventListener("invalid", () => {
+  const formDataElement = quantity.parentElement;
+  formDataElement.setAttribute("data-error", "Veuillez entrer 1 nombre entre 0 et 99.")
+  formDataElement.setAttribute("data-error-visible", "true");
+  console.log(formDataElement, "invalid");
+  }
+);
+
+city.addEventListener("invalid", () => {
+  const formDataElement = city.parentElement;
+  formDataElement.setAttribute("data-error", "Veuillez choisir une option.")
+  formDataElement.setAttribute("data-error-visible", "true");
+  console.log(formDataElement, "invalid");
+  }
+);
+
+gcu.addEventListener("invalid", () => {
+  const formDataElement = gcu.parentElement;
+  formDataElement.setAttribute("data-error", "Veuillez accepter les CGU.")
+  formDataElement.setAttribute("data-error-visible", "true");
+  console.log(formDataElement, "invalid");
+  }
+);
+
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault(); // Empêche la page de se recharger
+  let first = document.getElementById("first").value;
+  let last = document.getElementById("last").value;
+  let email = document.getElementById("email").value;
+  let birthdate = document.getElementById("birthdate").value;
+  let quantity = document.getElementById("quantity").value;
+  let listLocation = document.querySelectorAll("input[name='location']");
+  let location = "";
+  for(let i = 0; i < listLocation.length; i++) {
+    if(listLocation[i].checked) {
+      location = listLocation[i].value
+      break
+    }
+  }
+  console.log(first, last, email, birthdate, quantity, location);
+});
+
+submitBtn.addEventListener("click", (event) => {
+  removeDataError();
+});
+
+console.log(submitBtn, "test");
