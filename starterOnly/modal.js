@@ -23,11 +23,11 @@ function launchModal() {
 
 // START OWN CODE
 
-// get cross button
+// Obtenir croix et bouton de fermeture
 let closeCross = document.querySelector(".close");
 const closeBtn = document.getElementById("closeForm")
 
-// fermer la popup
+// Fonction pour fermer la popup
 function closeModal() {
   modalbg.style.display = "none";
 }
@@ -37,7 +37,6 @@ closeCross.addEventListener("click", closeModal);
 closeBtn.addEventListener("click", closeModal);
 
 
-// 2nd step
 // Récupération des informations du formulaire
 const form = document.querySelector("form");
 const firstName = document.getElementById("first");
@@ -49,6 +48,7 @@ const city = document.querySelector("input[name='location']");
 const gcu = document.getElementById("checkbox1");
 const submitBtn = document.querySelector(".btn-submit");
 
+// Fonction pour enlever les messages d'erreur
 function removeDataError() {
   const dataError = document.querySelectorAll("[data-error-visible]");
   dataError.forEach((dataError) => {
@@ -57,6 +57,7 @@ function removeDataError() {
   })
 };
 
+// Montre un message d'erreur si le champ n'est pas valide
 firstName.addEventListener("invalid", () => {
   const formDataElement = firstName.parentElement;
   formDataElement.setAttribute("data-error", "Veuillez entrer 2 caractères ou plus.")
@@ -106,29 +107,15 @@ gcu.addEventListener("invalid", () => {
   }
 );
 
-
+// Quand le formulaire est envoyé
 form.addEventListener("submit", (event) => {
   event.preventDefault(); // Empêche la page de se recharger
-  let first = document.getElementById("first").value;
-  let last = document.getElementById("last").value;
-  let email = document.getElementById("email").value;
-  let birthdate = document.getElementById("birthdate").value;
-  let quantity = document.getElementById("quantity").value;
-  let listLocation = document.querySelectorAll("input[name='location']");
-  let location = "";
-  for(let i = 0; i < listLocation.length; i++) {
-    if(listLocation[i].checked) {
-      location = listLocation[i].value
-      break
-    }
-  }
   const submitConfirm = document.getElementById("submitConfirm");
-  form.classList.add("select-hide");
-  submitConfirm.classList.remove("select-hide");
-  console.log(form);
-
+  form.classList.add("select-hide"); // Cache la div du formulaire
+  submitConfirm.classList.remove("select-hide"); // Affiche le message de confirmation
 });
 
+// A l'appui du bouton d'envoi, enlever les erreurs précédentes
 submitBtn.addEventListener("click", (event) => {
   removeDataError();
 });
